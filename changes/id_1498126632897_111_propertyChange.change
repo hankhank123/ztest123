@@ -1,0 +1,31 @@
+{
+	"fileName": "id_1498126632897_111_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "cus.o2c.billplan.manage.s1.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "hAlign",
+		"oldValue": "Center",
+		"newValue": "Left"
+	},
+	"selector": {
+		"id": "cus.o2c.billplan.manage.s1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CABillgPln--Items::Table-CABillgPlnItemStatus",
+		"type": "sap.m.Column",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/cus.o2c.billplan.manage.s1/changes/",
+	"creation": "2017-06-22T10:17:13.651Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.44.9"
+	},
+	"dependentSelector": {}
+}

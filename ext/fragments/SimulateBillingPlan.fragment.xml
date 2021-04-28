@@ -1,0 +1,45 @@
+<!--
+
+    Copyright (C) 2009-2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    >
+    
+	<Dialog
+	    class="sapUiPopupWithPadding"
+	    title="{i18n>simulatePlan}"
+	    afterOpen="afterOpen"
+	    beforeOpen="beforeOpen"
+	    afterClose="afterClose" >
+	    
+		<content>
+            
+		 	<Tree
+			    id="simulateTree"
+			    items="{path: 'SIM>/'}"
+			    >
+				<CustomTreeItem>
+					<FlexBox alignItems="Start" width="100%">
+						<items>
+							<Text text="{SIM>text}" />
+						</items>
+					</FlexBox>
+				</CustomTreeItem>
+			</Tree>
+		    
+		</content>
+
+
+		<endButton>
+			<Button
+			    id="onCancelPress"
+			    press="onCancelPress"
+			    text="{i18n>cancel}" />
+		</endButton>
+
+	</Dialog>
+</core:FragmentDefinition>

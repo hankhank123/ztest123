@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009-2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='EMOCLNT170_T')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="O2C_CI_BILLPLAN_MANAGE_SRV" sap:schema-version="1" xml:lang="de" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="C_CABillgPlnType" sap:content-version="1" sap:label="Abrechnungsplankopf">
+                <Key>
+                    <PropertyRef Name="CABillgPlnNumber"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Activation_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property MaxLength="12" Name="CABillgPlnNumber" Nullable="false" Type="Edm.String" sap:display-format="NonNegative" sap:label="Abrechnungsplan" sap:quickinfo="Nummer des Abrechnungsplans"/>
+                <Property Name="CABillgPlnStartDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Gültig ab" sap:updatable="false"/>
+                <Property Name="CABillgPlnEndDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Gültig bis" sap:updatable="false"/>
+                <Property Name="CABillgPlnNextRequestDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="nächste Anforderung" sap:quickinfo="nächstes Anforderungsdatum der Abrechnungsplanpositionen" sap:updatable="false"/>
+                <Property MaxLength="32" Name="CABillgPlnExternalReference" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="externe Referenz" sap:quickinfo="Externe Referenz des Abrechnungsplans" sap:updatable="false"/>
+                <Property Name="CABillgPlnLastRequestDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="letzte Anforderung" sap:quickinfo="Letztes Anforderungsdatum der Abrechnungsplanpositionen" sap:updatable="false"/>
+                <Property Name="CABillgPlnCreationDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Angelegt am" sap:quickinfo="Erstellungsdatum des Abrechnungsplans" sap:updatable="false"/>
+                <Property Name="CABillgPlnCreationTime" Precision="0" Type="Edm.Time" sap:creatable="false" sap:label="Angelegt um" sap:quickinfo="Uhrzeit, zu der der Abrechnungsplan erstellt wurde" sap:updatable="false"/>
+                <Property MaxLength="12" Name="CABillgPlnCreationUser" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Angelegt von" sap:quickinfo="Benutzer, der den Abrechnungsplan angelegt hat" sap:updatable="false"/>
+                <Property MaxLength="12" Name="CABillgPlnChangeName" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Geändert von" sap:quickinfo="Benutzer, der den Abrechnungsplan geändert hat" sap:updatable="false"/>
+                <Property Name="CABillgPlnChangeDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Geändert am" sap:quickinfo="Änderungsdatum des Abrechnungsplans" sap:updatable="false"/>
+                <Property MaxLength="1" Name="CABillgPlnStatus" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status des Abrechnungsplans" sap:text="to_CABillgPlnStatus/CABillgPlnStatus_Text" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CABillgPlnChangeTime" Precision="0" Type="Edm.Time" sap:creatable="false" sap:label="Geändert um" sap:quickinfo="Uhrzeit, zu der der Abrechnungsplan geändert wurde" sap:updatable="false"/>
+                <Property Name="CABillgPlnCompletionDate" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Erledigt am" sap:quickinfo="Erledigungsdatum" sap:updatable="false"/>
+                <Property MaxLength="5" Name="CABillgPlnCategory" Type="Edm.String" sap:display-format="UpperCase" sap:label="TypAbrPlan" sap:quickinfo="Typ des Abrechnungsplans" sap:text="to_CABillgPlnCategory/CABillgPlnCategory_Text" sap:value-list="standard"/>
+                <Property MaxLength="10" Name="LogicalSystem" Type="Edm.String" sap:display-format="UpperCase" sap:label="Logisches System"/>
+                <Property MaxLength="1" Name="CAApplicationArea" Type="Edm.String" sap:display-format="UpperCase" sap:label="Anwendungsbereich"/>
+                <Property MaxLength="1" Name="CAInvcgMasterDataType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Stammdatentyp" sap:quickinfo="Typ des Stammdatums für Abrechnung und Fakturierung"/>
+                <Property MaxLength="1" Name="CASubApplication" Type="Edm.String" sap:display-format="UpperCase" sap:label="Subapplikation" sap:quickinfo="Subapplikation im Vertragskontokorrent"/>
+                <Property MaxLength="10" Name="CAMasterAgreement" Type="Edm.String" sap:display-format="UpperCase" sap:label="Rahmenvertrag" sap:quickinfo="Identifikation des Rahmenvertrages"/>
+                <Property MaxLength="20" Name="CAInvcgOffsettingReferenceKey" Type="Edm.String" sap:display-format="UpperCase" sap:label="Anrechnungsreferenz" sap:quickinfo="Anrechnungsreferenzschlüssel"/>
+                <Property MaxLength="1" Name="CABillgPlnCreationMode" Type="Edm.String" sap:display-format="UpperCase" sap:label="Erstellungsmodus" sap:quickinfo="Erstellungsmodus des Abrechnungsplans"/>
+                <Property MaxLength="5" Name="CABillgPlnType" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Type" sap:quickinfo="Art des Abrechnungsplans" sap:text="to_CABillgPlnType/CABillgPlnType_Text" sap:updatable="false" sap:value-list="standard"/>
+                <Property MaxLength="8" Name="CABillgPlnNumberBllbleItm" Type="Edm.String" sap:display-format="NonNegative" sap:label="Anzahl Positionen" sap:quickinfo="Anzahl abrechenbarer Positionen zum Abrechnungsplan"/>
+                <Property MaxLength="60" Name="CABillgPlnDescription" Type="Edm.String" sap:label="Description" sap:quickinfo="Bezeichnung des Abrechnungsplans"/>
+                <Property MaxLength="259" Name="CompleteAddress" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:updatable="false"/>
+                <Property MaxLength="10" Name="BusinessPartner" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Geschäftspartner" sap:quickinfo="Geschäftspartnernummer" sap:updatable="false"/>
+                <Property MaxLength="12" Name="ContractAccount" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Vertragskonto" sap:quickinfo="Vertragskontonummer" sap:updatable="false"/>
+                <Property MaxLength="20" Name="CAContract" Type="Edm.String" sap:display-format="UpperCase" sap:label="Vertrag" sap:quickinfo="Referenzangaben aus dem Vertrag"/>
+                <Property Name="DraftUUID" Nullable="false" Type="Edm.Guid" sap:label="Schlüssel"/>
+                <Property Name="DraftEntityCreationDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf erstellt am"/>
+                <Property Name="DraftEntityLastChangeDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf zuletzt geändert am"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hat aktives Dokument" sap:sortable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hat Entwurf" sap:sortable="false"/>
+                <Property Name="IsActiveEntity" Nullable="false" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ist aktiv" sap:sortable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_9068B0E951B92AE83ADA67359D06090A" Name="DraftAdministrativeData" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9068B0E951B92AE83ADA67359D06090A" ToRole="ToRole_assoc_9068B0E951B92AE83ADA67359D06090A"/>
+                <NavigationProperty FromRole="FromRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" Name="SiblingEntity" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" ToRole="ToRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46"/>
+                <NavigationProperty FromRole="FromRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" Name="to_CAApplicationArea" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" ToRole="ToRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D"/>
+                <NavigationProperty FromRole="FromRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0" Name="to_CABillgPlnCategory" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_7217DE33FE37B8A4350C8E5EB4C860F0" ToRole="ToRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0"/>
+                <NavigationProperty FromRole="FromRole_assoc_B98CDF3210032582E5AFBC6CF2637110" Name="to_CABillgPlnCreationMode" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_B98CDF3210032582E5AFBC6CF2637110" ToRole="ToRole_assoc_B98CDF3210032582E5AFBC6CF2637110"/>
+                <NavigationProperty FromRole="FromRole_assoc_6116579C7259C19581B546E0B2BCEB38" Name="to_CABillgPlnItem" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_6116579C7259C19581B546E0B2BCEB38" ToRole="ToRole_assoc_6116579C7259C19581B546E0B2BCEB38"/>
+                <NavigationProperty FromRole="FromRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B" Name="to_CABillgPlnStatus" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_401B5BF4C63F205A3F0A0FEE17112A3B" ToRole="ToRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B"/>
+                <NavigationProperty FromRole="FromRole_assoc_640B53F2EB241BA5447DD8F892EC23BA" Name="to_CABillgPlnType" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_640B53F2EB241BA5447DD8F892EC23BA" ToRole="ToRole_assoc_640B53F2EB241BA5447DD8F892EC23BA"/>
+                <NavigationProperty FromRole="FromRole_assoc_10BBDA79B25650377E660184D036D2FF" Name="to_CABillgReqBPAddress" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_10BBDA79B25650377E660184D036D2FF" ToRole="ToRole_assoc_10BBDA79B25650377E660184D036D2FF"/>
+                <NavigationProperty FromRole="FromRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E" Name="to_CAInvcgMasterDataType" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9700ED8B5CDC7E89D97865EA00C0034E" ToRole="ToRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E"/>
+                <NavigationProperty FromRole="FromRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9" Name="to_CASubApplication" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_EC5473A5F216D9562DE239F2EAFE1EF9" ToRole="ToRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9"/>
+            </EntityType>
+            <EntityType Name="C_CABillgPlnItemType" sap:content-version="1" sap:label="Abrechnungsplankopf Positionen">
+                <Key>
+                    <PropertyRef Name="CABillgPlnNumber"/>
+                    <PropertyRef Name="CABillgPlnItem"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/>
+                <Property MaxLength="12" Name="CABillgPlnNumber" Nullable="false" Type="Edm.String" sap:display-format="NonNegative" sap:label="Abrechnungsplan" sap:quickinfo="Nummer des Abrechnungsplans" sap:value-list="standard"/>
+                <Property MaxLength="8" Name="CABillgPlnItem" Nullable="false" Type="Edm.String" sap:display-format="NonNegative" sap:label="Abr.planposition" sap:quickinfo="Fortlaufende Nummer der Abrechnungsplanposition"/>
+                <Property MaxLength="1" Name="CABillgPlnItemStatus" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status der Abrechnungsplanposition" sap:text="to_CABillgPlnItmStatus/CABillgPlnItemStatus_Text" sap:updatable="false" sap:value-list="standard"/>
+                <Property MaxLength="5" Name="CABillgPlnItmType" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="ArtAbrPlanpos." sap:quickinfo="Art der Abrechnungsplanposition" sap:text="to_CABillgPlnItmType/CABillgPlnItmType_Text" sap:updatable="false" sap:value-list="standard"/>
+                <Property MaxLength="60" Name="CABillgPlnItmTxt" Type="Edm.String" sap:label="Bezeichnung" sap:quickinfo="Bezeichnung der Abrechnungsplanposition"/>
+                <Property Name="CABillgPlnItemValidFrom" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Gültig ab" sap:updatable="false"/>
+                <Property Name="CABillgPlnItemValidTo" Precision="0" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:label="Gültig bis" sap:updatable="false"/>
+                <Property Name="DraftUUID" Nullable="false" Type="Edm.Guid" sap:label="Schlüssel"/>
+                <Property Name="DraftEntityCreationDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf erstellt am"/>
+                <Property Name="DraftEntityLastChangeDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf zuletzt geändert am"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:filterable="false" sap:label="Schlüssel" sap:sortable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hat aktives Dokument" sap:sortable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hat Entwurf" sap:sortable="false"/>
+                <Property Name="IsActiveEntity" Nullable="false" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ist aktiv" sap:sortable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB" Name="DraftAdministrativeData" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_3AD495C7B906923DB54D2443CBE5F3AB" ToRole="ToRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB"/>
+                <NavigationProperty FromRole="FromRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" Name="SiblingEntity" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" ToRole="ToRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA"/>
+                <NavigationProperty FromRole="FromRole_assoc_68A6E09CF2537EAA219EAF34B5C23734" Name="to_CABillgPln" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_68A6E09CF2537EAA219EAF34B5C23734" ToRole="ToRole_assoc_68A6E09CF2537EAA219EAF34B5C23734"/>
+                <NavigationProperty FromRole="FromRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" Name="to_CABillgPlnItmStatus" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" ToRole="ToRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418"/>
+                <NavigationProperty FromRole="FromRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6" Name="to_CABillgPlnItmType" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_6E7F025720456F80EE5B4F2DF21F62A6" ToRole="ToRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6"/>
+            </EntityType>
+            <EntityType Name="C_CABillgReqBPAddressType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                </Key>
+                <Property MaxLength="10" Name="BusinessPartner" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Geschäftspartner" sap:quickinfo="Geschäftspartnernummer"/>
+                <Property MaxLength="259" Name="CompleteAddress" Type="Edm.String" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="I_CAApplicationAreaType" sap:content-version="1" sap:label="Anwendungsbereich">
+                <Key>
+                    <PropertyRef Name="CAApplicationArea"/>
+                </Key>
+                <Property MaxLength="1" Name="CAApplicationArea" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Anwendungsbereich"/>
+                <Property MaxLength="1" Name="CAApplicationAreaIsActive" Type="Edm.String" sap:display-format="UpperCase" sap:label="Anwendber. aktiv" sap:quickinfo="Anwendungsbereich ist aktiv"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnCategoryType" sap:content-version="1" sap:label="Typ des Abrechnungsplans">
+                <Key>
+                    <PropertyRef Name="CABillgPlnCategory"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnCategory" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="TypAbrPlan" sap:quickinfo="Typ des Abrechnungsplans" sap:text="CABillgPlnCategory_Text"/>
+                <Property MaxLength="50" Name="CABillgPlnCategory_Text" Type="Edm.String" sap:creatable="false" sap:label="Typ des Abr.plans" sap:quickinfo="Bezeichnung des Typs des Abrechnungsplans" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_A1534A8E5951513D23ACF5D5436B33C2" Name="to_CABillgPlnCategoryText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_A1534A8E5951513D23ACF5D5436B33C2" ToRole="ToRole_assoc_A1534A8E5951513D23ACF5D5436B33C2"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnCategoryTextType" sap:content-version="1" sap:label="Typ des Abrechnungsplans (Texte)">
+                <Key>
+                    <PropertyRef Name="CABillgPlnCategory"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnCategory" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="TypAbrPlan" sap:quickinfo="Typ des Abrechnungsplans"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel" sap:text="to_Language/Language_Text" sap:value-list="standard"/>
+                <Property MaxLength="50" Name="CABillgPlnCategoryText" Type="Edm.String" sap:label="Typ des Abr.plans" sap:quickinfo="Bezeichnung des Typs des Abrechnungsplans"/>
+                <NavigationProperty FromRole="FromRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" Name="to_Language" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" ToRole="ToRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnCreationModeType" sap:content-version="1" sap:label="Erstellungsmodus des Abrechnungsplans">
+                <Key>
+                    <PropertyRef Name="CABillgPlnCreationMode"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnCreationMode" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Erstellungsmodus" sap:quickinfo="Erstellungsmodus des Abrechnungsplans" sap:text="CABillgPlnCreationMode_Text"/>
+                <Property MaxLength="250" Name="CABillgPlnCreationMode_Text" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" Name="to_CABillgPlnCreationModeText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" ToRole="ToRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnCreationModeTextType" sap:content-version="1" sap:label="Erstellungsmodus des Abr.plans (Texte)">
+                <Key>
+                    <PropertyRef Name="CABillgPlnCreationMode"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnCreationMode" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Erstellungsmodus" sap:quickinfo="Erstellungsmodus des Abrechnungsplans"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel" sap:text="to_Language/Language_Text" sap:value-list="standard"/>
+                <Property MaxLength="250" Name="CABillgPlnCreationModeText" Type="Edm.String" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)"/>
+                <NavigationProperty FromRole="FromRole_assoc_96372FF610B30B9FF4EF7B429384F993" Name="to_Language" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_96372FF610B30B9FF4EF7B429384F993" ToRole="ToRole_assoc_96372FF610B30B9FF4EF7B429384F993"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnItmStatusType" sap:content-version="1" sap:label="Status der Abrechnungsplanposition">
+                <Key>
+                    <PropertyRef Name="CABillgPlnItemStatus"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnItemStatus" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:text="CABillgPlnItemStatus_Text"/>
+                <Property MaxLength="60" Name="CABillgPlnItemStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Kurzbeschreibung" sap:quickinfo="Kurztext zu Festwerten" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7" Name="to_Text" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_77D93E9D67EA8DF560A5C1E70306E9A7" ToRole="ToRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnItmStatusTextType" sap:content-version="1" sap:label="Status der Abrechnungsplanposition Text">
+                <Key>
+                    <PropertyRef Name="CABillgPlnItmStatus"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnItmStatus" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:text="to_CABillgPlnItmStatus/CABillgPlnItemStatus_Text" sap:value-list="standard"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprache" sap:quickinfo="Sprachenschlüssel" sap:text="to_Language/Language_Text" sap:value-list="standard"/>
+                <Property MaxLength="60" Name="CABillgPlnItmStatusText" Type="Edm.String" sap:label="Kurzbeschreibung" sap:quickinfo="Kurztext zu Festwerten"/>
+                <NavigationProperty FromRole="FromRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E" Name="to_CABillgPlnItmStatus" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_ADC3EAFD463248F0C67254C3DA8F876E" ToRole="ToRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E"/>
+                <NavigationProperty FromRole="FromRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE" Name="to_Language" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_D2EC1FE861435D98A4CA598346BDD8AE" ToRole="ToRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnItmTypeType" sap:content-version="1" sap:label="Typ der Abrechnungsplanposition">
+                <Key>
+                    <PropertyRef Name="CABillgPlnItmType"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnItmType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="ArtAbrPlanpos." sap:quickinfo="Art der Abrechnungsplanposition" sap:text="CABillgPlnItmType_Text"/>
+                <Property MaxLength="50" Name="CABillgPlnItmType_Text" Type="Edm.String" sap:creatable="false" sap:label="ArtAbrPlanpos." sap:quickinfo="Bezeichnung der Art der Abrechnungsplanposition" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_8966B0E933774FA68687CC3D130AFD46" Name="to_Text" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_8966B0E933774FA68687CC3D130AFD46" ToRole="ToRole_assoc_8966B0E933774FA68687CC3D130AFD46"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnItmTypeTextType" sap:content-version="1" sap:label="Typ der Abrechnungsplanposition Texte">
+                <Key>
+                    <PropertyRef Name="CABillgPlnItmType"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnItmType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="ArtAbrPlanpos." sap:quickinfo="Art der Abrechnungsplanposition"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="50" Name="CABillgPlnItmTypeText" Type="Edm.String" sap:label="ArtAbrPlanpos." sap:quickinfo="Bezeichnung der Art der Abrechnungsplanposition"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnStatusType" sap:content-version="1" sap:label="Status des Abrechnungsplans">
+                <Key>
+                    <PropertyRef Name="CABillgPlnStatus"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnStatus" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status des Abrechnungsplans" sap:text="CABillgPlnStatus_Text"/>
+                <Property MaxLength="250" Name="CABillgPlnStatus_Text" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748" Name="to_CABillgPlnStatusText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_34DB1454C30B4C30E1731E7B9A9A8748" ToRole="ToRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnStatusTextType" sap:content-version="1" sap:label="Status des Abrechnungsplans (Texte)">
+                <Key>
+                    <PropertyRef Name="CABillgPlnStatus"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="1" Name="CABillgPlnStatus" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status des Abrechnungsplans"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="250" Name="CABillgPlnStatusText" Type="Edm.String" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnTypeType" sap:content-version="1" sap:label="Art des Abrechnungsplans">
+                <Key>
+                    <PropertyRef Name="CABillgPlnType"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="ArtAbrPlan" sap:quickinfo="Art des Abrechnungsplans" sap:text="CABillgPlnType_Text"/>
+                <Property MaxLength="50" Name="CABillgPlnType_Text" Type="Edm.String" sap:creatable="false" sap:label="Art des Abr.plans" sap:quickinfo="Bezeichnung der Art des Abrechnungsplans" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_E04A28243E98569B202FFFE35C0256B8" Name="to_CABillgPlnTypeText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_E04A28243E98569B202FFFE35C0256B8" ToRole="ToRole_assoc_E04A28243E98569B202FFFE35C0256B8"/>
+            </EntityType>
+            <EntityType Name="I_CABillgPlnTypeTextType" sap:content-version="1" sap:label="Art des Abrechnungsplans (Texte)">
+                <Key>
+                    <PropertyRef Name="CABillgPlnType"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="5" Name="CABillgPlnType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="ArtAbrPlan" sap:quickinfo="Art des Abrechnungsplans"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="50" Name="CABillgPlnTypeText" Type="Edm.String" sap:label="Art des Abr.plans" sap:quickinfo="Bezeichnung der Art des Abrechnungsplans"/>
+            </EntityType>
+            <EntityType Name="I_CAInvcgMasterDataTypeType" sap:content-version="1" sap:label="Typ des Stammdatums">
+                <Key>
+                    <PropertyRef Name="CAInvcgMasterDataType"/>
+                </Key>
+                <Property MaxLength="1" Name="CAInvcgMasterDataType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Stammdatentyp" sap:quickinfo="Typ des Stammdatums für Abrechnung und Fakturierung" sap:text="CAInvcgMasterDataType_Text"/>
+                <Property MaxLength="250" Name="CAInvcgMasterDataType_Text" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_4B80FA707C281963E959893DD109FCC1" Name="to_CAInvcgMasterDataTypeText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_4B80FA707C281963E959893DD109FCC1" ToRole="ToRole_assoc_4B80FA707C281963E959893DD109FCC1"/>
+            </EntityType>
+            <EntityType Name="I_CAInvcgMasterDataTypeTextType" sap:content-version="1" sap:label="Typ des Stammdatums (Texte)">
+                <Key>
+                    <PropertyRef Name="CAInvcgMasterDataType"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="1" Name="CAInvcgMasterDataType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Stammdatentyp" sap:quickinfo="Typ des Stammdatums für Abrechnung und Fakturierung"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="250" Name="CAInvcgMasterDataTypeText" Type="Edm.String" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)"/>
+            </EntityType>
+            <EntityType Name="I_CASubApplicationType" sap:content-version="1" sap:label="Subapplikation im Vertr.kontok.">
+                <Key>
+                    <PropertyRef Name="CASubApplication"/>
+                </Key>
+                <Property MaxLength="1" Name="CASubApplication" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Subapplikation" sap:quickinfo="Subapplikation im Vertragskontokorrent" sap:text="CASubApplication_Text"/>
+                <Property MaxLength="250" Name="CASubApplication_Text" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" Name="to_CASubApplicationText" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" ToRole="ToRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D"/>
+            </EntityType>
+            <EntityType Name="I_CASubApplicationTextType" sap:content-version="1" sap:label="Subapplikation im Vertr.kontok. (Texte)">
+                <Key>
+                    <PropertyRef Name="CASubApplication"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="1" Name="CASubApplication" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Subapplikation" sap:quickinfo="Subapplikation im Vertragskontokorrent"/>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="250" Name="CASubApplicationText" Type="Edm.String" sap:display-format="UpperCase" sap:label="Beschreibung" sap:quickinfo="Beschreibung (250stellig)"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeDataType" sap:content-version="1" sap:label="Verwaltungsdaten für Entwürfe">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Nullable="false" Type="Edm.Guid" sap:label="Entwurf (techn. ID)" sap:quickinfo="Entwurf (technische ID)"/>
+                <Property Name="ProcessingStartDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf in Bearbeitung seit"/>
+                <Property MaxLength="12" Name="InProcessByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurf wird bearbeitet von" sap:text="InProcessByUserDescription"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Entwurf beibeihalten von Benutzer"/>
+                <Property Name="EnqueueStartDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf gesperrt seit"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Von mir erstellter Entwurf"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Von mir zuletzt geänderter Entwurf"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Von mir bearbeiteter Entwurf"/>
+                <Property MaxLength="80" Name="CreatedByUserDescription" Type="Edm.String" sap:label="Entwurf erstellt von (Beschreibung)"/>
+                <Property MaxLength="80" Name="LastChangedByUserDescription" Type="Edm.String" sap:label="Entwurf zuletzt geändert von (Beschr.)" sap:quickinfo="Entwurf zuletzt geändert von (Beschreibung)"/>
+                <Property MaxLength="80" Name="InProcessByUserDescription" Type="Edm.String" sap:label="Entwurf wird bearbeitet von (Beschr.)" sap:quickinfo="Entwurf wird bearbeitet von (Beschreibung)"/>
+                <Property MaxLength="30" Name="DraftEntityType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurfsentitäts-ID"/>
+                <Property MaxLength="30" Name="PrincipalDraftEntity" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurfsentitäts-ID"/>
+                <Property Name="PrincipalDraftKey" Type="Edm.Guid" sap:label="Entwurf (techn. ID)" sap:quickinfo="Entwurf (technische ID)"/>
+                <Property Name="CreationDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf erstellt am"/>
+                <Property MaxLength="12" Name="CreatedByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurf erstellt von" sap:text="CreatedByUserDescription"/>
+                <Property Name="LastChangeDateTime" Precision="7" Type="Edm.DateTimeOffset" sap:label="Entwurf zuletzt geändert am"/>
+                <Property MaxLength="12" Name="LastChangedByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurf zuletzt geändert von" sap:text="LastChangedByUserDescription"/>
+                <Property MaxLength="1" Name="DraftAccessType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Entwurfszugriffstyp"/>
+            </EntityType>
+            <EntityType Name="I_LanguageType" sap:content-version="1" sap:label="Sprache">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel" sap:text="Language_Text"/>
+                <Property MaxLength="16" Name="Language_Text" Type="Edm.String" sap:creatable="false" sap:label="Bezeichnung" sap:quickinfo="Bezeichnung der Sprache" sap:updatable="false"/>
+                <Property MaxLength="2" Name="LanguageISOCode" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sprache (ISO 639)" sap:quickinfo="2-stelliger SAP Language Code"/>
+                <NavigationProperty FromRole="FromRole_assoc_DAB3483923698C609058A2E35497F42C" Name="to_Text" Relationship="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_DAB3483923698C609058A2E35497F42C" ToRole="ToRole_assoc_DAB3483923698C609058A2E35497F42C"/>
+            </EntityType>
+            <EntityType Name="I_LanguageTextType" sap:content-version="1" sap:label="Text zur Sprache">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LanguageCode"/>
+                </Key>
+                <Property MaxLength="2" Name="Language" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="2" Name="LanguageCode" Nullable="false" Type="Edm.String" sap:label="Sprachenschlüssel"/>
+                <Property MaxLength="16" Name="LanguageName" Type="Edm.String" sap:label="Bezeichnung" sap:quickinfo="Bezeichnung der Sprache"/>
+            </EntityType>
+            <ComplexType Name="ValidationFunctionResult">
+                <Property Name="IsValid" Type="Edm.Boolean" sap:label="Ist gültig"/>
+            </ComplexType>
+            <Association Name="assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryTextType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2">
+                        <PropertyRef Name="Language"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+            </Association>
+            <Association Name="assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAApplicationAreaType"/>
+            </Association>
+            <Association Name="assoc_7217DE33FE37B8A4350C8E5EB4C860F0" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0">
+                        <PropertyRef Name="CABillgPlnCategory"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0">
+                        <PropertyRef Name="CABillgPlnCategory"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_B98CDF3210032582E5AFBC6CF2637110" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_B98CDF3210032582E5AFBC6CF2637110" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_B98CDF3210032582E5AFBC6CF2637110" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeType"/>
+            </Association>
+            <Association Name="assoc_6116579C7259C19581B546E0B2BCEB38" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_6116579C7259C19581B546E0B2BCEB38" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_6116579C7259C19581B546E0B2BCEB38" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+            </Association>
+            <Association Name="assoc_401B5BF4C63F205A3F0A0FEE17112A3B" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnStatusType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B">
+                        <PropertyRef Name="CABillgPlnStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B">
+                        <PropertyRef Name="CABillgPlnStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_640B53F2EB241BA5447DD8F892EC23BA" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_640B53F2EB241BA5447DD8F892EC23BA" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_640B53F2EB241BA5447DD8F892EC23BA" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnTypeType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_640B53F2EB241BA5447DD8F892EC23BA">
+                        <PropertyRef Name="CABillgPlnType"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_640B53F2EB241BA5447DD8F892EC23BA">
+                        <PropertyRef Name="CABillgPlnType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_10BBDA79B25650377E660184D036D2FF" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_10BBDA79B25650377E660184D036D2FF" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_10BBDA79B25650377E660184D036D2FF" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgReqBPAddressType"/>
+            </Association>
+            <Association Name="assoc_9700ED8B5CDC7E89D97865EA00C0034E" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAInvcgMasterDataTypeType"/>
+            </Association>
+            <Association Name="assoc_EC5473A5F216D9562DE239F2EAFE1EF9" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CASubApplicationType"/>
+            </Association>
+            <Association Name="assoc_9068B0E951B92AE83ADA67359D06090A" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_9068B0E951B92AE83ADA67359D06090A" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_9068B0E951B92AE83ADA67359D06090A" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_DraftAdministrativeDataType"/>
+            </Association>
+            <Association Name="assoc_A1534A8E5951513D23ACF5D5436B33C2" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_A1534A8E5951513D23ACF5D5436B33C2" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_A1534A8E5951513D23ACF5D5436B33C2" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryTextType"/>
+            </Association>
+            <Association Name="assoc_3AD495C7B906923DB54D2443CBE5F3AB" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_DraftAdministrativeDataType"/>
+            </Association>
+            <Association Name="assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+            </Association>
+            <Association Name="assoc_68A6E09CF2537EAA219EAF34B5C23734" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_68A6E09CF2537EAA219EAF34B5C23734" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+                <End Multiplicity="1" Role="ToRole_assoc_68A6E09CF2537EAA219EAF34B5C23734" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType"/>
+            </Association>
+            <Association Name="assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418">
+                        <PropertyRef Name="CABillgPlnItemStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418">
+                        <PropertyRef Name="CABillgPlnItemStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_6E7F025720456F80EE5B4F2DF21F62A6" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6" Type="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmTypeType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6">
+                        <PropertyRef Name="CABillgPlnItmType"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6">
+                        <PropertyRef Name="CABillgPlnItmType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_77D93E9D67EA8DF560A5C1E70306E9A7" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType"/>
+            </Association>
+            <Association Name="assoc_34DB1454C30B4C30E1731E7B9A9A8748" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnStatusType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnStatusTextType"/>
+            </Association>
+            <Association Name="assoc_8966B0E933774FA68687CC3D130AFD46" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_8966B0E933774FA68687CC3D130AFD46" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmTypeType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_8966B0E933774FA68687CC3D130AFD46" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmTypeTextType"/>
+            </Association>
+            <Association Name="assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeTextType"/>
+            </Association>
+            <Association Name="assoc_DAB3483923698C609058A2E35497F42C" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_DAB3483923698C609058A2E35497F42C" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_DAB3483923698C609058A2E35497F42C" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageTextType"/>
+            </Association>
+            <Association Name="assoc_4B80FA707C281963E959893DD109FCC1" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_4B80FA707C281963E959893DD109FCC1" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAInvcgMasterDataTypeType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_4B80FA707C281963E959893DD109FCC1" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAInvcgMasterDataTypeTextType"/>
+            </Association>
+            <Association Name="assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CASubApplicationType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CASubApplicationTextType"/>
+            </Association>
+            <Association Name="assoc_96372FF610B30B9FF4EF7B429384F993" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_96372FF610B30B9FF4EF7B429384F993" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeTextType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_96372FF610B30B9FF4EF7B429384F993" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_96372FF610B30B9FF4EF7B429384F993">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_96372FF610B30B9FF4EF7B429384F993">
+                        <PropertyRef Name="Language"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E04A28243E98569B202FFFE35C0256B8" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_E04A28243E98569B202FFFE35C0256B8" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnTypeType"/>
+                <End Multiplicity="*" Role="ToRole_assoc_E04A28243E98569B202FFFE35C0256B8" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnTypeTextType"/>
+            </Association>
+            <Association Name="assoc_ADC3EAFD463248F0C67254C3DA8F876E" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E">
+                        <PropertyRef Name="CABillgPlnItemStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E">
+                        <PropertyRef Name="CABillgPlnItmStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_D2EC1FE861435D98A4CA598346BDD8AE" sap:content-version="1">
+                <End Multiplicity="1" Role="FromRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType"/>
+                <End Multiplicity="0..1" Role="ToRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE" Type="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageType"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE">
+                        <PropertyRef Name="Language"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="O2C_CI_BILLPLAN_MANAGE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" Name="C_CABillgPln" sap:content-version="1"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType" Name="C_CABillgPlnItem" sap:content-version="1"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgReqBPAddressType" Name="C_CABillgReqBPAddress" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAApplicationAreaType" Name="I_CAApplicationArea" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryType" Name="I_CABillgPlnCategory" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryTextType" Name="I_CABillgPlnCategoryText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeType" Name="I_CABillgPlnCreationMode" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeTextType" Name="I_CABillgPlnCreationModeText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusType" Name="I_CABillgPlnItmStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType" Name="I_CABillgPlnItmStatusText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmTypeType" Name="I_CABillgPlnItmType" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmTypeTextType" Name="I_CABillgPlnItmTypeText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnStatusType" Name="I_CABillgPlnStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnStatusTextType" Name="I_CABillgPlnStatusText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnTypeType" Name="I_CABillgPlnType" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnTypeTextType" Name="I_CABillgPlnTypeText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAInvcgMasterDataTypeType" Name="I_CAInvcgMasterDataType" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CAInvcgMasterDataTypeTextType" Name="I_CAInvcgMasterDataTypeText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CASubApplicationType" Name="I_CASubApplication" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_CASubApplicationTextType" Name="I_CASubApplicationText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_DraftAdministrativeDataType" Name="I_DraftAdministrativeData" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageType" Name="I_Language" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/>
+                <EntitySet EntityType="O2C_CI_BILLPLAN_MANAGE_SRV.I_LanguageTextType" Name="I_LanguageText" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_68A6E09CF2537EAA219EAF34B5C23734" Name="assoc_68A6E09CF2537EAA219EAF34B5C23734" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPlnItem" Role="FromRole_assoc_68A6E09CF2537EAA219EAF34B5C23734"/>
+                    <End EntitySet="C_CABillgPln" Role="ToRole_assoc_68A6E09CF2537EAA219EAF34B5C23734"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9700ED8B5CDC7E89D97865EA00C0034E" Name="assoc_9700ED8B5CDC7E89D97865EA00C0034E" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E"/>
+                    <End EntitySet="I_CAInvcgMasterDataType" Role="ToRole_assoc_9700ED8B5CDC7E89D97865EA00C0034E"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_640B53F2EB241BA5447DD8F892EC23BA" Name="assoc_640B53F2EB241BA5447DD8F892EC23BA" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_640B53F2EB241BA5447DD8F892EC23BA"/>
+                    <End EntitySet="I_CABillgPlnType" Role="ToRole_assoc_640B53F2EB241BA5447DD8F892EC23BA"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" Name="assoc_0202F6E4DA9683ECEA246D68C2F4EE8D" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D"/>
+                    <End EntitySet="I_CAApplicationArea" Role="ToRole_assoc_0202F6E4DA9683ECEA246D68C2F4EE8D"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" Name="assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46"/>
+                    <End EntitySet="C_CABillgPln" Role="ToRole_assoc_A0468EFF318A7D5DF87D2EB7BC9B5C46"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_D2EC1FE861435D98A4CA598346BDD8AE" Name="assoc_D2EC1FE861435D98A4CA598346BDD8AE" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnItmStatusText" Role="FromRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_D2EC1FE861435D98A4CA598346BDD8AE"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_8966B0E933774FA68687CC3D130AFD46" Name="assoc_8966B0E933774FA68687CC3D130AFD46" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnItmType" Role="FromRole_assoc_8966B0E933774FA68687CC3D130AFD46"/>
+                    <End EntitySet="I_CABillgPlnItmTypeText" Role="ToRole_assoc_8966B0E933774FA68687CC3D130AFD46"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9068B0E951B92AE83ADA67359D06090A" Name="assoc_9068B0E951B92AE83ADA67359D06090A" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_9068B0E951B92AE83ADA67359D06090A"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_9068B0E951B92AE83ADA67359D06090A"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_6E7F025720456F80EE5B4F2DF21F62A6" Name="assoc_6E7F025720456F80EE5B4F2DF21F62A6" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPlnItem" Role="FromRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6"/>
+                    <End EntitySet="I_CABillgPlnItmType" Role="ToRole_assoc_6E7F025720456F80EE5B4F2DF21F62A6"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_401B5BF4C63F205A3F0A0FEE17112A3B" Name="assoc_401B5BF4C63F205A3F0A0FEE17112A3B" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B"/>
+                    <End EntitySet="I_CABillgPlnStatus" Role="ToRole_assoc_401B5BF4C63F205A3F0A0FEE17112A3B"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_DAB3483923698C609058A2E35497F42C" Name="assoc_DAB3483923698C609058A2E35497F42C" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_Language" Role="FromRole_assoc_DAB3483923698C609058A2E35497F42C"/>
+                    <End EntitySet="I_LanguageText" Role="ToRole_assoc_DAB3483923698C609058A2E35497F42C"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_B98CDF3210032582E5AFBC6CF2637110" Name="assoc_B98CDF3210032582E5AFBC6CF2637110" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_B98CDF3210032582E5AFBC6CF2637110"/>
+                    <End EntitySet="I_CABillgPlnCreationMode" Role="ToRole_assoc_B98CDF3210032582E5AFBC6CF2637110"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_10BBDA79B25650377E660184D036D2FF" Name="assoc_10BBDA79B25650377E660184D036D2FF" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_10BBDA79B25650377E660184D036D2FF"/>
+                    <End EntitySet="C_CABillgReqBPAddress" Role="ToRole_assoc_10BBDA79B25650377E660184D036D2FF"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" Name="assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPlnItem" Role="FromRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA"/>
+                    <End EntitySet="C_CABillgPlnItem" Role="ToRole_assoc_9BA53DF11E2BB1316FED7BE69CA1FBEA"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_ADC3EAFD463248F0C67254C3DA8F876E" Name="assoc_ADC3EAFD463248F0C67254C3DA8F876E" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnItmStatusText" Role="FromRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E"/>
+                    <End EntitySet="I_CABillgPlnItmStatus" Role="ToRole_assoc_ADC3EAFD463248F0C67254C3DA8F876E"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_EC5473A5F216D9562DE239F2EAFE1EF9" Name="assoc_EC5473A5F216D9562DE239F2EAFE1EF9" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9"/>
+                    <End EntitySet="I_CASubApplication" Role="ToRole_assoc_EC5473A5F216D9562DE239F2EAFE1EF9"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_E04A28243E98569B202FFFE35C0256B8" Name="assoc_E04A28243E98569B202FFFE35C0256B8" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnType" Role="FromRole_assoc_E04A28243E98569B202FFFE35C0256B8"/>
+                    <End EntitySet="I_CABillgPlnTypeText" Role="ToRole_assoc_E04A28243E98569B202FFFE35C0256B8"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_7217DE33FE37B8A4350C8E5EB4C860F0" Name="assoc_7217DE33FE37B8A4350C8E5EB4C860F0" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0"/>
+                    <End EntitySet="I_CABillgPlnCategory" Role="ToRole_assoc_7217DE33FE37B8A4350C8E5EB4C860F0"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_6116579C7259C19581B546E0B2BCEB38" Name="assoc_6116579C7259C19581B546E0B2BCEB38" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPln" Role="FromRole_assoc_6116579C7259C19581B546E0B2BCEB38"/>
+                    <End EntitySet="C_CABillgPlnItem" Role="ToRole_assoc_6116579C7259C19581B546E0B2BCEB38"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_34DB1454C30B4C30E1731E7B9A9A8748" Name="assoc_34DB1454C30B4C30E1731E7B9A9A8748" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnStatus" Role="FromRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748"/>
+                    <End EntitySet="I_CABillgPlnStatusText" Role="ToRole_assoc_34DB1454C30B4C30E1731E7B9A9A8748"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" Name="assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPlnItem" Role="FromRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418"/>
+                    <End EntitySet="I_CABillgPlnItmStatus" Role="ToRole_assoc_82C7EFE9A8DB675AD4CA48CCB6CC3418"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_4B80FA707C281963E959893DD109FCC1" Name="assoc_4B80FA707C281963E959893DD109FCC1" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CAInvcgMasterDataType" Role="FromRole_assoc_4B80FA707C281963E959893DD109FCC1"/>
+                    <End EntitySet="I_CAInvcgMasterDataTypeText" Role="ToRole_assoc_4B80FA707C281963E959893DD109FCC1"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_3AD495C7B906923DB54D2443CBE5F3AB" Name="assoc_3AD495C7B906923DB54D2443CBE5F3AB" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="C_CABillgPlnItem" Role="FromRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_3AD495C7B906923DB54D2443CBE5F3AB"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_77D93E9D67EA8DF560A5C1E70306E9A7" Name="assoc_77D93E9D67EA8DF560A5C1E70306E9A7" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnItmStatus" Role="FromRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7"/>
+                    <End EntitySet="I_CABillgPlnItmStatusText" Role="ToRole_assoc_77D93E9D67EA8DF560A5C1E70306E9A7"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_96372FF610B30B9FF4EF7B429384F993" Name="assoc_96372FF610B30B9FF4EF7B429384F993" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnCreationModeText" Role="FromRole_assoc_96372FF610B30B9FF4EF7B429384F993"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_96372FF610B30B9FF4EF7B429384F993"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" Name="assoc_D22D3CFD5D0F91B3C4F03859FC534D3D" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CASubApplication" Role="FromRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D"/>
+                    <End EntitySet="I_CASubApplicationText" Role="ToRole_assoc_D22D3CFD5D0F91B3C4F03859FC534D3D"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_A1534A8E5951513D23ACF5D5436B33C2" Name="assoc_A1534A8E5951513D23ACF5D5436B33C2" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnCategory" Role="FromRole_assoc_A1534A8E5951513D23ACF5D5436B33C2"/>
+                    <End EntitySet="I_CABillgPlnCategoryText" Role="ToRole_assoc_A1534A8E5951513D23ACF5D5436B33C2"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" Name="assoc_B25D4DF02C2EC26674BAB6A2A562B6C9" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnCreationMode" Role="FromRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9"/>
+                    <End EntitySet="I_CABillgPlnCreationModeText" Role="ToRole_assoc_B25D4DF02C2EC26674BAB6A2A562B6C9"/>
+                </AssociationSet>
+                <AssociationSet Association="O2C_CI_BILLPLAN_MANAGE_SRV.assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" Name="assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false">
+                    <End EntitySet="I_CABillgPlnCategoryText" Role="FromRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_96E4C52E079CCFC7F7B02B2A2BE1F4F2"/>
+                </AssociationSet>
+                <FunctionImport EntitySet="C_CABillgPln" Name="C_CABillgPlnActivation" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" m:HttpMethod="POST" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" sap:applicable-path="Activation_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                </FunctionImport>
+                <FunctionImport EntitySet="C_CABillgPln" Name="C_CABillgPlnEdit" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" m:HttpMethod="POST" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" sap:applicable-path="Edit_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                    <Parameter Mode="In" Name="PreserveChanges" Nullable="true" Type="Edm.Boolean"/>
+                </FunctionImport>
+                <FunctionImport EntitySet="C_CABillgPln" Name="C_CABillgPlnPreparation" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" m:HttpMethod="POST" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" sap:applicable-path="Preparation_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                    <Parameter Mode="In" Name="SideEffectsQualifier" Nullable="true" Type="Edm.String"/>
+                </FunctionImport>
+                <FunctionImport Name="C_CABillgPlnValidation" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" sap:applicable-path="Validation_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                    <Parameter Mode="In" Name="SideEffectsQualifier" Nullable="true" Type="Edm.String"/>
+                </FunctionImport>
+                <FunctionImport EntitySet="C_CABillgPlnItem" Name="C_CABillgPlnItemPreparation" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType" m:HttpMethod="POST" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType" sap:applicable-path="Preparation_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter MaxLength="8" Mode="In" Name="CABillgPlnItem" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                    <Parameter Mode="In" Name="SideEffectsQualifier" Nullable="true" Type="Edm.String"/>
+                </FunctionImport>
+                <FunctionImport Name="C_CABillgPlnItemValidation" ReturnType="O2C_CI_BILLPLAN_MANAGE_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType" sap:applicable-path="Validation_ac">
+                    <Parameter MaxLength="12" Mode="In" Name="CABillgPlnNumber" Type="Edm.String"/>
+                    <Parameter MaxLength="8" Mode="In" Name="CABillgPlnItem" Type="Edm.String"/>
+                    <Parameter Mode="In" Name="DraftUUID" Type="Edm.Guid"/>
+                    <Parameter Mode="In" Name="IsActiveEntity" Type="Edm.Boolean"/>
+                    <Parameter Mode="In" Name="SideEffectsQualifier" Nullable="true" Type="Edm.String"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPln" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnActivation"/>
+                        <PropertyValue Property="EditAction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnEdit"/>
+                        <PropertyValue Property="PreparationAction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnValidation"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnItemPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPlnItemValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>O2C_CI_BILLPLAN_MANAGE_SRV.O2C_CI_BILLPLAN_MANAGE_SRV_Entities/C_CABillgPln</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType/CABillgPlnStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status des Abrechnungsplans"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnStatus"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType/CABillgPlnCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Typ des Abrechnungsplans"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnCategory"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnCategory_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType/CABillgPlnType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Art des Abrechnungsplans"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnType"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnType"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnType_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType/CABillgPlnNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Abrechnungsplankopf"/>
+                        <PropertyValue Property="CollectionPath" String="C_CABillgPln"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnNumber"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType/CABillgPlnItemStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status der Abrechnungsplanposition"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnItmStatus"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnItemStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItemStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItemStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType/CABillgPlnItmType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Typ der Abrechnungsplanposition"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnItmType"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnItmType"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItmType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItmType_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCategoryTextType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Bool="true" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnCreationModeTextType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Bool="true" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType/CABillgPlnItmStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status der Abrechnungsplanposition"/>
+                        <PropertyValue Property="CollectionPath" String="I_CABillgPlnItmStatus"/>
+                        <PropertyValue Bool="false" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CABillgPlnItmStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItemStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CABillgPlnItemStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.I_CABillgPlnItmStatusTextType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Bool="true" Property="SearchSupported"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CABillgPlnNumber</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="O2C_CI_BILLPLAN_MANAGE_SRV.C_CABillgPlnItemType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CABillgPlnItem</PropertyPath>
+                        <PropertyPath>CABillgPlnNumber</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link href="./sap/O2C_CI_BILLPLAN_MANAGE_SRV/$metadata" rel="self" xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link href="./sap/O2C_CI_BILLPLAN_MANAGE_SRV/$metadata" rel="latest-version" xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

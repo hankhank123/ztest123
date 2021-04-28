@@ -1,0 +1,81 @@
+<!--
+
+    Copyright (C) 2009-2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:s="sap.ui.comp.smartfield"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    >
+	
+	<Dialog
+		class="sapUiPopupWithPadding"
+		title="{i18n>createBillingPlanTitle}"
+		afterOpen="afterOpen"
+		beforeOpen="beforeOpen"
+		afterClose="afterClose" >
+		
+		<content>
+			
+			<smartForm:SmartForm
+				layout="ResponsiveGridLayout"
+				editable="true"
+                >
+			    
+			    <smartForm:layout>
+                    <smartForm:Layout
+                        columnsM="1"
+                        columnsL="1"
+                        columnsXL="1"
+                        emptySpanS="0"
+                        emptySpanM="0"
+                        emptySpanL="2"
+                        emptySpanXL="4"
+                        labelSpanS="6"
+                        labelSpanM="6"
+                        labelSpanL="6"
+                        labelSpanXL="6"
+                        >
+                    </smartForm:Layout>
+                </smartForm:layout>
+			    
+			    <smartForm:Group>
+					<smartForm:GroupElement>
+				        <s:SmartField id="idFieldItemType" value="{CABillgPlnItmType}" />
+					</smartForm:GroupElement>
+
+					<smartForm:GroupElement>
+				        <s:SmartField id="idFieldAmount" value="{CABillgPlnItemAmount}" />
+					</smartForm:GroupElement>
+
+					<smartForm:GroupElement>
+					    <s:SmartField id="idFieldValidFrom" value="{CABillgPlnItemValidFrom}" />
+					</smartForm:GroupElement>
+
+					<smartForm:GroupElement>
+					    <s:SmartField id="idFieldValidTo" value="{CABillgPlnItmEndDate}" />
+					</smartForm:GroupElement>
+
+					<smartForm:GroupElement>
+    				    <s:SmartField id="idFieldPeriod" value="{CABillgCycle}" />
+					</smartForm:GroupElement>
+			    </smartForm:Group>
+
+			</smartForm:SmartForm>
+			
+		</content>
+		
+		<beginButton>
+			<Button id="idCreate" press="onCreatePress" text="{i18n>create}" />
+		</beginButton>
+		<endButton>
+			<Button id="idCancel" press="onCancelPress" text="{i18n>cancel}" />
+		</endButton>
+		
+	</Dialog>
+	
+</core:FragmentDefinition>

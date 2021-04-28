@@ -1,0 +1,30 @@
+{
+	"fileName": "id_1511258118600_115_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "cus.o2c.billplan.manage.s1.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "useIconTabBar",
+		"newValue": true
+	},
+	"selector": {
+		"id": "cus.o2c.billplan.manage.s1::sap.suite.ui.generic.template.ObjectPage.view.Details::C_CABillgPln--objectPage",
+		"type": "sap.uxap.ObjectPageLayout",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/cus.o2c.billplan.manage.s1/changes/",
+	"creation": "2017-11-21T09:55:22.901Z",
+	"originalLanguage": "DE",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.46.12"
+	},
+	"dependentSelector": {}
+}
