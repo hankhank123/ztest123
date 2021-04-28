@@ -1,0 +1,34 @@
+<mvc:View controllerName="zyytt1.zyytt1.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title text=""/>
+			<Label text="{worklistView>/gjahr}"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<Label text="{worklistView>/gjahr}"/>
+			<Input name="Uuid" id="Uuid_id" value="{worklistView>/gjahr}"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<Table id="table" visible="true" width="auto" items="{ path: '/zv_bkpf', sorter: { path: 'blart', descending: false } }" growing="true"
+				growingScrollToLoad="true" updateFinished="onUpdateFinished">
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectIdentifier title="{blart}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:SemanticPage>
+</mvc:View>
